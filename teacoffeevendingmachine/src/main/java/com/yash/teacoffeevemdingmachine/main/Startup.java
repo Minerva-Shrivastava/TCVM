@@ -25,6 +25,7 @@ public class Startup {
 		int choice;
 		int noOfCups;
 		String continueChoice;
+		
 		do {
 			JsonUtil.readMenu("mainMenu.txt");
 			choice = scanner.nextInt();
