@@ -1,0 +1,11 @@
+************************** Welcome To Tea Coffee Vending Machine ***************************
+
+1.Make Tea
+2.Make Coffee
+3.Make Black Tea
+4.Make Black Coffee
+5.Refill Containers
+6.Container Status
+7.Exit TCVM
+
+Enter Your Choice :
