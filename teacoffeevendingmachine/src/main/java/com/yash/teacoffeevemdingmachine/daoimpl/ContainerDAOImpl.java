@@ -44,7 +44,7 @@ public class ContainerDAOImpl implements ContainerDAO {
 		if (ingredient == null) {
 			throw new NullObjectException("Ingredient Field can not be null");
 		}
-		List<Container> containers = getListOfContainers();
+		List<Container> containers = getAllContainers();
 		for (Container container : containers) {
 			if(container.getIngredient().equals(ingredient))
 				return container;
@@ -53,13 +53,13 @@ public class ContainerDAOImpl implements ContainerDAO {
 	}
 
 	@Override
-	public Container updateContainer(Ingredient ingredient, Container givenContainer) {
-		if (ingredient == null && givenContainer == null) {
+	public Container updateContainer(Container givenContainer) {
+		if (givenContainer.getIngredient() == null && givenContainer == null) {
 			throw new NullObjectException("Ingredient And Container values cannot null");
 		}
 
 		for (Container container : containers) {
-			if (container.getIngredient() == ingredient) {
+			if (container.getIngredient() == givenContainer.getIngredient()) {
 				containers.set(containers.indexOf(container), givenContainer);
 				break;
 			}
@@ -71,9 +71,21 @@ public class ContainerDAOImpl implements ContainerDAO {
 	}
 
 	@Override
-	public List<Container> getListOfContainers() {
+	public List<Container> getAllContainers() {
 		containers = jsonUtil.readObjectFromJson();
 		return containers;
+	}
+
+	@Override
+	public boolean refillAllContainers() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean refillContainer(Ingredient ingredient) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

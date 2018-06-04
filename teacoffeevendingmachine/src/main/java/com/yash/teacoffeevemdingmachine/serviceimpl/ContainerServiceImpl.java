@@ -42,13 +42,13 @@ public class ContainerServiceImpl implements ContainerService {
 		if (ingredient == null && container == null) {
 			throw new NullObjectException("Ingredient And Container values cannot null");
 		}
-		Container updatedContainer = containerDAO.updateContainer(ingredient, container);
+		Container updatedContainer = containerDAO.updateContainer(container);
 		return updatedContainer;
 	}
 
 	@Override
 	public Integer refillContainers() {
-		containers = containerDAO.getListOfContainers();
+		containers = containerDAO.getAllContainers();
 		double diff;
 		int rowsAffected = 0;
 		for (Container container : containers) {
@@ -64,7 +64,7 @@ public class ContainerServiceImpl implements ContainerService {
 
 	@Override
 	public Integer containerStatus() {
-		containers = containerDAO.getListOfContainers();
+		containers = containerDAO.getAllContainers();
 		int rowsAffected = 0;
 		
 		for (Container container : containers) {
@@ -75,6 +75,12 @@ public class ContainerServiceImpl implements ContainerService {
 		rowsAffected = containers.size();
 		System.out.println("Container Refilled Successfully");
 		return rowsAffected;
+	}
+
+	@Override
+	public void resetContainers() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

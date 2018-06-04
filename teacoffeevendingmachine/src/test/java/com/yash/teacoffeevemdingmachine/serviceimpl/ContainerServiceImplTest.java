@@ -42,7 +42,7 @@ public class ContainerServiceImplTest {
 		List<Container> containers = Arrays.asList(new Container(Ingredient.COFFEE, 2000, 2000),
 				new Container(Ingredient.MILK, 10000, 10000), new Container(Ingredient.TEA, 2000, 2000),
 				new Container(Ingredient.WATER, 15000, 15000), new Container(Ingredient.SUGAR, 8000, 8000));
-		when(containerDAO.getListOfContainers()).thenReturn(containers);
+		when(containerDAO.getAllContainers()).thenReturn(containers);
 		Container requiredContainer = containerService.getContainerByIngredient(ingredient);
 		assertEquals(requiredContainer.getIngredient(), container.getIngredient());
 	}
@@ -59,7 +59,7 @@ public class ContainerServiceImplTest {
 		Ingredient ingredient = Ingredient.COFFEE;
 		Container container = new Container(ingredient, 2000.00, 1900.00);
 		Container updateContainer = new Container(ingredient, 2000.00, 1900.00);
-		when(containerDAO.updateContainer(ingredient, container)).thenReturn(updateContainer);
+		when(containerDAO.updateContainer(container)).thenReturn(updateContainer);
 		Container returnedContainer = containerService.updateContainer(ingredient, container);
 		assertEquals(returnedContainer.getCurrentAvailability(), container.getCurrentAvailability(), 0.00);
 	}
@@ -69,7 +69,7 @@ public class ContainerServiceImplTest {
 		List<Container> containers = Arrays.asList(new Container(Ingredient.COFFEE, 2000, 2000),
 				new Container(Ingredient.MILK, 10000, 10000), new Container(Ingredient.TEA, 2000, 2000),
 				new Container(Ingredient.WATER, 15000, 15000), new Container(Ingredient.SUGAR, 8000, 8000));
-		when(containerDAO.getListOfContainers()).thenReturn(containers);
+		when(containerDAO.getAllContainers()).thenReturn(containers);
 		int rowsAffected = containerService.refillContainers();
 		assertEquals(5, rowsAffected);
 	}
@@ -80,7 +80,7 @@ public class ContainerServiceImplTest {
 		List<Container> containers = Arrays.asList(new Container(Ingredient.COFFEE, 2000, 2000),
 				new Container(Ingredient.MILK, 10000, 10000), new Container(Ingredient.TEA, 2000, 2000),
 				new Container(Ingredient.WATER, 15000, 15000), new Container(Ingredient.SUGAR, 8000, 8000));
-		when(containerDAO.getListOfContainers()).thenReturn(containers);
+		when(containerDAO.getAllContainers()).thenReturn(containers);
 		int rowsAffected = containerService.containerStatus();
 		assertEquals(5, rowsAffected);
 	}

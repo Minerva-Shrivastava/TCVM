@@ -78,4 +78,14 @@ public class OrderServiceImpl implements OrderService {
 		return rowsAffected;
 	}
 
+	@Override
+	public void getTotalSales() {
+		List<Order> orders = getOrders();
+		double totalSale = 0.00;
+		for (Order order : orders) {
+			totalSale += order.getTotalAmount();
+		}
+		System.out.println("Total Sales are :"+totalSale);
+	}
+
 }

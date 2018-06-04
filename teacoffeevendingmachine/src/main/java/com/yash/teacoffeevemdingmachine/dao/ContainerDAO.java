@@ -6,10 +6,15 @@ import com.yash.teacoffeevemdingmachine.domain.Container;
 import com.yash.teacoffeevemdingmachine.enumeration.Ingredient;
 
 public interface ContainerDAO {
-	public Container getContainerByIngredient(Ingredient ingredient);
+	
+	Container getContainerByIngredient(Ingredient ingredient);
 
-	public Container updateContainer(Ingredient ingredient, Container container);
+	List<Container> getAllContainers();
 
-	public List<Container> getListOfContainers();
+	Container updateContainer(Container container);
+
+	boolean refillAllContainers();
+
+	boolean refillContainer(Ingredient ingredient);
 
 }

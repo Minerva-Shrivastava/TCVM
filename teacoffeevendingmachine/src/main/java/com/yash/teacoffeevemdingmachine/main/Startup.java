@@ -18,10 +18,12 @@ public class Startup {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
+		
 		ContainerDAO containerDAO = ContainerDAOImpl.getInstance();
 		ContainerService containerService = new ContainerServiceImpl(containerDAO);
 		OrderDAO orderDAO = new OrderDAOImpl();
 		OrderService orderService = new OrderServiceImpl(orderDAO);
+		
 		int choice;
 		int noOfCups;
 		String continueChoice;
@@ -51,12 +53,18 @@ public class Startup {
 				orderService.addOrder(new Order(noOfCups, Drink.BLACK_COFFEE));
 				break;
 			case 5:
-				containerService.refillContainers();
+				orderService.getTotalSales();
 				break;
 			case 6:
-				containerService.containerStatus();
+				containerService.refillContainers();
 				break;
 			case 7:
+				containerService.resetContainers();
+				break;
+			case 8:
+				containerService.containerStatus();
+				break;
+			case 9:
 				System.out.println("Thank you for using tea coffee vending machine");
 				System.exit(0);
 				break;

@@ -17,4 +17,6 @@ public interface ContainerService {
 
 	Integer containerStatus();
 
+	void resetContainers();
+
 }

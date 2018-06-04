@@ -9,6 +9,7 @@ import com.yash.teacoffeevemdingmachine.dao.OrderDAO;
 import com.yash.teacoffeevemdingmachine.domain.Order;
 import com.yash.teacoffeevemdingmachine.enumeration.Drink;
 import com.yash.teacoffeevemdingmachine.exception.EmptyListException;
+import com.yash.teacoffeevemdingmachine.exception.FileEmptyException;
 import com.yash.teacoffeevemdingmachine.exception.NullObjectException;
 import com.yash.teacoffeevemdingmachine.util.JsonUtil;
 
@@ -33,9 +34,8 @@ public class OrderDAOImpl implements OrderDAO {
 			throw new NullObjectException("Order cannot be null");
 		}
 		
-		List<Order> orders = new ArrayList<>();
+		List<Order> orders = getOrders();
 		orders.add(order);
-		
 		JsonUtil.writeJSONToFile(orders);
 		rowsAffected = 1;
 		return rowsAffected;

@@ -4,8 +4,10 @@
 2.Make Coffee
 3.Make Black Tea
 4.Make Black Coffee
-5.Refill Containers
-6.Container Status
-7.Exit TCVM
+5.Check Total Sale
+6.Refill Containers
+7.Reset Containers
+8.Container Status
+9.Exit TCVM
 
 Enter Your Choice :
