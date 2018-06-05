@@ -13,7 +13,7 @@ public interface ContainerDAO {
 
 	Container updateContainer(Container container);
 
-	boolean refillAllContainers();
+	int refillAllContainers();
 
 	boolean refillContainer(Ingredient ingredient);
 

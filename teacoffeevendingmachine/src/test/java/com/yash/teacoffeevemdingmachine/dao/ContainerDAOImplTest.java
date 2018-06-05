@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import org.hamcrest.core.IsInstanceOf;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -35,25 +36,31 @@ public class ContainerDAOImplTest {
 		assertEquals(ingredient, container.getIngredient());
 	}
 
-	/*@Test(expected = NullObjectException.class)
+	@Test(expected = NullPointerException.class)
 	public void updateContainer_IngredientIsNullAndContainerIsNullGiven_ShouldThrowNullObjectException() {
 		Ingredient ingredient = null;
 		Container container = null;
-		containerDAO.updateContainer(ingredient, container);
+		containerDAO.updateContainer(container);
 	}
 
 	@Test
 	public void updateContainer_ContainerGiven_ShouldReturnTrueWhenContainerIsUpdated() throws Exception {
 		Container container = new Container(Ingredient.COFFEE, 2000, 200);
-		boolean containerUpdated = containerDAO.updateContainer(container);
-		assertTrue(containerUpdated);
+		Container containerUpdated = containerDAO.updateContainer(container);
+		assertTrue(containerUpdated instanceof Container);
 	}
 
 	@Test
 	public void getListOfContainers_ShouldReturnListOfContainers() {
-		List<Container> containers = containerDAO.getListOfContainers();
+		List<Container> containers = containerDAO.getAllContainers();
 		int sizeOfContainers = containers.size();
 		assertEquals(5, sizeOfContainers);
-	}*/
+	}
+	
+	@Test
+	public void refillContainers_ShouldReturnSizeOfContainersList() {
+		int rowsAffected = containerDAO.refillAllContainers(); 
+		assertEquals(5,rowsAffected);
+	}
 
 }

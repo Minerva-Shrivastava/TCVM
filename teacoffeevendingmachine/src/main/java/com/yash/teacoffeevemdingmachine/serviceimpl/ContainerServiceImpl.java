@@ -48,17 +48,9 @@ public class ContainerServiceImpl implements ContainerService {
 
 	@Override
 	public Integer refillContainers() {
-		containers = containerDAO.getAllContainers();
-		double diff;
 		int rowsAffected = 0;
-		for (Container container : containers) {
-			diff = container.getMaxCapacity() - container.getCurrentAvailability();
-			System.out.println(container.getIngredient() + " : Difference " + diff + " , Available : "
-					+ container.getCurrentAvailability() + " , Max Capacity : " + container.getMaxCapacity());
-			container.setCurrentAvailability(container.getCurrentAvailability() + diff);
-			updateContainer(container.getIngredient(), container);
-		}
-		rowsAffected = containers.size();
+		rowsAffected = containerDAO.refillAllContainers();
+		System.out.println("Container ReFilled Successfully");
 		return rowsAffected;
 	}
 
@@ -66,15 +58,19 @@ public class ContainerServiceImpl implements ContainerService {
 	public Integer containerStatus() {
 		containers = containerDAO.getAllContainers();
 		int rowsAffected = 0;
-		
+		System.out.println("---------------------------------------------------------------------------------");
+		System.out.println("|\tIngredient\t|\tMax Quatity\t|\tCurrent Availablity\t|");
+		System.out.println("---------------------------------------------------------------------------------");
+
 		for (Container container : containers) {
-			System.out.println(
-					"Ingredient : " + container.getIngredient() + " , Max capacity: " + container.getMaxCapacity()
-							+ " , Current availability: " + container.getCurrentAvailability() + "");
+			System.out.println("|\t" + container.getIngredient() + "\t\t|\t" + container.getMaxCapacity() + "\t\t|\t"
+					+ container.getCurrentAvailability() + "\t\t\t|");
 		}
+		System.out.println("---------------------------------------------------------------------------------");
 		rowsAffected = containers.size();
-		System.out.println("Container Refilled Successfully");
+	
 		return rowsAffected;
+	
 	}
 
 	@Override

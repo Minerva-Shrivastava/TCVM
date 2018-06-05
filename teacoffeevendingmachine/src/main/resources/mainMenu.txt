@@ -6,8 +6,8 @@
 4.Make Black Coffee
 5.Check Total Sale
 6.Refill Containers
-7.Reset Containers
-8.Container Status
-9.Exit TCVM
+7.Container Status
+8.Exit TCVM
+****************************************************************** By Minerva Shrivaastava *
 
 Enter Your Choice :

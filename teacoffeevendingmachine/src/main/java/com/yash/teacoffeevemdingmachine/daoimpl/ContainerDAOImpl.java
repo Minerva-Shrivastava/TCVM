@@ -54,7 +54,7 @@ public class ContainerDAOImpl implements ContainerDAO {
 
 	@Override
 	public Container updateContainer(Container givenContainer) {
-		if (givenContainer.getIngredient() == null && givenContainer == null) {
+		if (givenContainer.getIngredient() == null || givenContainer == null) {
 			throw new NullObjectException("Ingredient And Container values cannot null");
 		}
 
@@ -77,9 +77,26 @@ public class ContainerDAOImpl implements ContainerDAO {
 	}
 
 	@Override
-	public boolean refillAllContainers() {
-		// TODO Auto-generated method stub
-		return false;
+	public int refillAllContainers() {
+		containers = getAllContainers();
+		double diff;
+		int rowsAffected = 0;
+		System.out.println(
+				"-------------------------------------------------------------------------------------------------");
+		System.out.println("|\tIngredient\t|\tEmpty\t|\tMax Quatity\t|\tCurrent Availablity\t|");
+		System.out.println(
+				"-------------------------------------------------------------------------------------------------");
+		for (Container container : containers) {
+			diff = container.getMaxCapacity() - container.getCurrentAvailability();
+			System.out.println("|\t" + container.getIngredient() + "\t\t|\t" + diff + "\t|\t"
+					+ container.getMaxCapacity() + "\t\t|\t" + container.getCurrentAvailability() + "\t\t\t|");
+			container.setCurrentAvailability(container.getCurrentAvailability() + diff);
+			updateContainer(container);
+		}
+		System.out.println(
+				"-------------------------------------------------------------------------------------------------");
+		rowsAffected= containers.size();
+		return rowsAffected;
 	}
 
 	@Override

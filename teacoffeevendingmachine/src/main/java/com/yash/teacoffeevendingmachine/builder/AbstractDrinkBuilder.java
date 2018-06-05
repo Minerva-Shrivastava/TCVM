@@ -12,6 +12,7 @@ import com.yash.teacoffeevemdingmachine.enumeration.Ingredient;
 import com.yash.teacoffeevemdingmachine.exception.ContainerUnderFlowException;
 import com.yash.teacoffeevemdingmachine.service.ContainerService;
 import com.yash.teacoffeevemdingmachine.serviceimpl.ContainerServiceImpl;
+import com.yash.teacoffeevemdingmachine.serviceimpl.OrderServiceImpl;
 
 public class AbstractDrinkBuilder implements IDrinkBuilder {
 
@@ -46,6 +47,7 @@ public class AbstractDrinkBuilder implements IDrinkBuilder {
 			}
 			container.setCurrentAvailability(quantityAvailable - (noOfCups * (quantityConsumed + quantityWasted)));
 			order.setTotalAmount(abstractDrinkConfiguration.getDrinkRate() * noOfCups);
+			
 			System.out.println("Ingredient :" + container.getIngredient() + " Max capacity: "
 					+ container.getMaxCapacity() + " Current availability: " + container.getCurrentAvailability());
 			containerService.updateContainer(entry.getKey(), container);
@@ -54,6 +56,7 @@ public class AbstractDrinkBuilder implements IDrinkBuilder {
 		order.setStatus(true);
 		logger.info("order is ready");
 		System.out.println("Order :"+order);
+		
 	}
 
 }

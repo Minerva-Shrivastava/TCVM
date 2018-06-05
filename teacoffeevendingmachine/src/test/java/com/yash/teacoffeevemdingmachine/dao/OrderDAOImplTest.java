@@ -9,6 +9,7 @@ import com.yash.teacoffeevemdingmachine.dao.OrderDAO;
 import com.yash.teacoffeevemdingmachine.daoimpl.OrderDAOImpl;
 import com.yash.teacoffeevemdingmachine.domain.Order;
 import com.yash.teacoffeevemdingmachine.enumeration.Drink;
+import com.yash.teacoffeevemdingmachine.exception.FileDoesNotExistException;
 import com.yash.teacoffeevemdingmachine.exception.NullObjectException;
 
 public class OrderDAOImplTest {
@@ -42,7 +43,7 @@ public class OrderDAOImplTest {
 	@Test
 	public void getOrders_shouldReturnSizeOfOrdersList_WhenListOfOrderObjectAreInJSONFile() {
 		
-		assertEquals(1, orderDAO.getOrders().size());
+		assertEquals(2, orderDAO.getOrders().size());
 	}
 
 	
